@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "fa25PA2"
+			"path" : "fa25PA2.exe"
+		},
+		{
+			"path" : "fa25PA2.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -42,14 +45,14 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk -fcolor-diagnostics"
+					"fragment" : "-g -std=gnu++14 -fdiagnostics-color=always"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/Users/manjumuralidharan/CLionProjects/fa25PA2/."
+					"path" : "/cygdrive/c/Users/rowla/CLionProjects/fa25PA2/."
 				}
 			],
 			"language" : "CXX",
@@ -77,14 +80,14 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "",
+				"fragment" : "-Wl,--enable-auto-import",
 				"role" : "flags"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "fa25PA2",
-	"nameOnDisk" : "fa25PA2",
+	"nameOnDisk" : "fa25PA2.exe",
 	"paths" : 
 	{
 		"build" : ".",

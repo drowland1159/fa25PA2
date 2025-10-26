@@ -27,7 +27,10 @@ A public **template repository** has been provided for you to fork and begin you
 
 ## Overview
 
-An intercepted text has arrived in your system. As a newly appointed **Cybersecurity Specialist**, your job is to design a simple encoding module that converts readable text into a variable-bit cipher. Frequent letters must be represented with shorter bit patterns to minimize transmission size, while rare letters use longer ones. This is your first step toward building efficient, adaptive encryption systems.
+An intercepted text has arrived in your system. As a newly appointed **Cybersecurity Specialist**, 
+your job is to design a simple encoding module that converts readable text into a variable-bit cipher. 
+Frequent letters must be represented with shorter bit patterns to minimize transmission size, while rare 
+letters use longer ones. This is your first step toward building efficient, adaptive encryption systems.
 
 You will:
 
@@ -37,7 +40,8 @@ You will:
 - Use an **iterative traversal** with a stack to assign these bit sequences.  
 - Print the resulting code table and the encoded cipher message.
 
-This assignment brings together array data structures, heap operations, and iterative traversal logic—all under the applied context of secure text encoding.
+This assignment brings together array data structures, heap operations, and iterative traversal logic—all 
+under the applied context of secure text encoding.
 
 ---
 
@@ -52,7 +56,8 @@ This assignment brings together array data structures, heap operations, and iter
 
 ## Problem Statement
 
-You are given a plain-text file containing intercepted communication. Your task is to encode it into a compact cipher using variable bit lengths per symbol.  
+You are given a plain-text file containing intercepted communication. Your task is to encode it into a 
+compact cipher using variable bit lengths per symbol.  
 The goal is to represent frequent letters with shorter binary codes and rare letters with longer ones.
 
 ### Step-by-Step Example

@@ -16,11 +16,21 @@ struct MinHeap {
 
     void push(int idx, int weightArr[]) {
         // TODO: insert index at end of heap, restore order using upheap()
+        if (size < 64) {
+            data[size] = weightArr[size];
+            size++;
+            return;
+        }
+        cout << idx << " cannot be entered as Heap is full." << endl;
     }
 
     int pop(int weightArr[]) {
         // TODO: remove and return smallest index
         // Replace root with last element, then call downheap()
+        if (size < 1) {
+            cout << "Heap is empty." << endl;
+            return -1;
+        }
         return -1; // placeholder
     }
 
