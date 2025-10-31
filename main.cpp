@@ -109,7 +109,7 @@ int buildEncodingTree(int nextFree) {
         int heapNumTwo = heap.pop(weightArr);
         int parentNode = heapNumOne + heapNumTwo;
 
-        leftArr[parentNode] = heapNumOne;
+        leftArr[parentNode] = heapNumOne; // i know issue here, thinking on how to fix
         rightArr[parentNode] = heapNumTwo;
         heap.push(parentNode, weightArr);
     }
@@ -122,8 +122,22 @@ void generateCodes(int root, string codes[]) {
     // Use stack<pair<int, string>> to simulate DFS traversal.
     // Left edge adds '0', right edge adds '1'.
     // Record code when a leaf node is reached.
+    int binaryCode = 0;
+    stack<pair<int, string>> stack;
+    stack.push(make_pair(root, ""));
+    do {
+        pair<int, string> parent = stack.top();
+        int index = parent.first;
+        string str = parent.second;
 
+        if (!str.empty()) {
+            codes[index] = binaryCode; // still need to convert to binary
+            continue;
+        }
+        stack.push(make_pair(leftArr[index], (charArr[leftArr[index]] + "")));
+    } while (!stack.empty());
 }
+
 
 // Step 5: Print table and encoded message
 void encodeMessage(const string& filename, string codes[]) {

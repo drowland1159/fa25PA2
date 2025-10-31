@@ -28,7 +28,7 @@ struct MinHeap {
         // TODO: remove and return smallest index
         // Replace root with last element, then call downheap()
         if (size == 0) {
-            cout << "Heap is empty." << endl;
+            // cout << "Heap is empty." << endl;
             return -1;
         }
         int num = data[--size];
