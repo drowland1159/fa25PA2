@@ -136,28 +136,14 @@ void generateCodes(int root, string codes[]) {
         string str = current.second;
         stack.pop();
         if (leftArr[index] == -1) { // looking at createLeafNodes, -1 should be it
-            codes[index] = binaryCode;
+            codes[index] = str;
             continue;
         } else {
-
+            stack.push(make_pair(leftArr[index], str + "0"));
+            stack.push(make_pair(rightArr[index], str + "1"));
         }
 
     }
-
-    // do {
-    //     pair<int, string> parent = stack.top();
-    //     int index = parent.first;
-    //     string str = parent.second;
-    //
-    //     if (!str.empty()) {
-    //         codes[index] = binaryCode;
-    //         continue;
-    //     }
-    //     binaryCode.append("0"); // adds a 0
-    //     stack.push(make_pair(leftArr[index], (charArr[leftArr[index]] + "")));
-    //     binaryCode[binaryCode.size() - 1] = '1'; // adds a 1
-    //     stack.push(make_pair(leftArr[index], (charArr[leftArr[index]] + "")));
-    // } while (!stack.empty());
 }
 
 
