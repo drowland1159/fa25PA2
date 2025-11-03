@@ -17,9 +17,9 @@ struct MinHeap {
     void push(int idx, int weightArr[]) {
         // TODO: insert index at end of heap, restore order using upheap()
         if (size < 64) {
-            data[size] = weightArr[size];
+            data[size] = idx; // We are saving the idx from weightArr to the bottom of the heap
             size++;
-            upheap(size = 1, weightArr);
+            upheap(size - 1, weightArr); // calls upheap on idx to place it properly in the heap.
             return;
         }
         cout << idx << " cannot be entered as Heap is full." << endl;
@@ -32,10 +32,11 @@ struct MinHeap {
             // cout << "Heap is empty." << endl;
             return -1;
         }
-        int num = data[--size];
+        int root = data[0];
+        data[0] = data[size-1];
         size--;
         downheap(0, weightArr);
-        return num; // placeholder
+        return root; // placeholder
     }
 
     void upheap(int pos, int weightArr[]) {
@@ -43,10 +44,11 @@ struct MinHeap {
         if (pos == 0) return;
 
         int parentNode = (pos - 1) / 2;
-        if (weightArr[parentNode] > weightArr[pos]) {
-            int tmp = weightArr[parentNode];
-            weightArr[parentNode] = weightArr[pos];
-            weightArr[pos] = tmp;
+        // REMINDER :: weightArr is the weights, data is the heap.
+        if (weightArr[data[parentNode]] > weightArr[data[pos]]) { // instead of weightArr[parentNode] we do weightArr[data[parentNode]]
+            int tmp = data[parentNode];
+            data[parentNode] = data[pos];
+            data[pos] = tmp;
             upheap(parentNode, weightArr);
         } else {
             return;
@@ -58,19 +60,20 @@ struct MinHeap {
         int leftChild = 2 * pos + 1;
         int rightChild = 2 * pos + 2;
         int smallestChild = leftChild;
+        // REMINDER :: weightArr is the weights, data is the heap.
         if (rightChild > size && leftChild > size) {
             return;
-        } else if (rightChild > size) {
+        } else if (rightChild >= size) { // rightChild >= size cause if size = 64 then it contains 0 - 63. Needs to be inclusive
             smallestChild = leftChild;
         } else {
-            if (weightArr[leftChild] > weightArr[rightChild]) {
+            if (weightArr[data[leftChild]] > weightArr[data[rightChild]]) {
                 smallestChild = rightChild;
             }
         }
-        if (weightArr[pos] > weightArr[smallestChild]) {
-            int tmp = weightArr[smallestChild];
-            weightArr[smallestChild] = weightArr[pos];
-            weightArr[pos] = tmp;
+        if (weightArr[data[pos]] > weightArr[data[smallestChild]]) {
+            int tmp = data[smallestChild];
+            data[smallestChild] = data[pos];
+            data[pos] = tmp;
         } else {
             return;
         }
