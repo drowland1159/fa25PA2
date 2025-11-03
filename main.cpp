@@ -104,17 +104,19 @@ int buildEncodingTree(int nextFree) {
     // 4. Return the index of the last remaining node (root)
 
     MinHeap heap = MinHeap();
-    while (nextFree > 0) {
-        heap.push(nextFree, weightArr);
-        nextFree--;
+    // I replaced the while with a for
+    // nextFree is the next INDEX that can be used. (I don't know why it took me that long to understand that)
+    for (int i = 0; i < nextFree; i++) { // 0 -> nextFree - 1 as those are used indexs
+        heap.push(i,weightArr);
     }
     while (heap.size > 1) {
         int heapNumOne = heap.pop(weightArr);
         int heapNumTwo = heap.pop(weightArr);
-        int parentNode = heapNumOne + heapNumTwo;
-        leftArr[heap.size] = heapNumOne; // i know issue here, thinking on how to fix
-        rightArr[heap.size] = heapNumTwo;
-        heap.push(parentNode, weightArr);
+        leftArr[nextFree] = heapNumOne; // nextFree == parent nodes index
+        rightArr[nextFree] = heapNumTwo;
+        weightArr[nextFree] = weightArr[heapNumOne] + weightArr[heapNumTwo];
+        heap.push(nextFree, weightArr);
+        nextFree++;
     }
     return heap.pop(weightArr); // root index
 }
