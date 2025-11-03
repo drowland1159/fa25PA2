@@ -19,7 +19,7 @@ struct MinHeap {
         if (size < 64) {
             data[size] = weightArr[size];
             size++;
-            upheap(0, weightArr);
+            upheap(size = 1, weightArr);
             return;
         }
         cout << idx << " cannot be entered as Heap is full." << endl;
@@ -40,18 +40,21 @@ struct MinHeap {
 
     void upheap(int pos, int weightArr[]) {
         // TODO: swap child upward while smaller than parent
-        if (pos == size)
+        if (pos == 0) return;
+
+        int parentNode = (pos - 1) / 2;
+        if (weightArr[parentNode] > weightArr[pos]) {
+            int tmp = weightArr[parentNode];
+            weightArr[parentNode] = weightArr[pos];
+            weightArr[pos] = tmp;
+            upheap(parentNode, weightArr);
+        } else {
             return;
-        if (weightArr[pos] > weightArr[size]) {
-            swap(pos, size);
         }
     }
 
     void downheap(int pos, int weightArr[]) {
         // TODO: swap parent downward while larger than any child
-        if (size == pos) {
-            return;
-        }
         if (weightArr[pos] > weightArr[size]) {
             swap(pos, size);
         }

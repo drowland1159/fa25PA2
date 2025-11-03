@@ -134,8 +134,8 @@ void generateCodes(int root, string codes[]) {
         string str = parent.second;
 
         if (!str.empty()) {
-            codes[index] = stoi(binaryCode); // stoi == string to int
-            return;
+            codes[index] = binaryCode;
+            continue;
         }
         binaryCode.append("0"); // adds a 0
         stack.push(make_pair(leftArr[index], (charArr[leftArr[index]] + "")));
