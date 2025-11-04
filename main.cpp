@@ -31,19 +31,15 @@ int main() {
     // Step 2: Create leaf nodes for each character with nonzero frequency
     int nextFree = createLeafNodes(freq);
 
-    cout << "after build leaf" << endl;
     // Step 3: Build encoding tree using your heap
     int root = buildEncodingTree(nextFree);
 
-    cout << "after build encoding tree" << endl;
     // Step 4: Generate binary codes using an STL stack
     string codes[26];
     generateCodes(root, codes);
 
-    cout << "after generate codes" << endl;
     // Step 5: Encode the message and print output
     encodeMessage("input.txt", codes);
-    cout << "after encode message" << endl;
 
     return 0;
 }
@@ -114,9 +110,9 @@ int buildEncodingTree(int nextFree) {
         int heapNumTwo = heap.pop(weightArr);
         leftArr[nextFree] = heapNumOne; // nextFree == parent nodes index
         rightArr[nextFree] = heapNumTwo;
-        weightArr[nextFree] = weightArr[heapNumOne] + weightArr[heapNumTwo];
+        weightArr[nextFree] = weightArr[heapNumOne] + weightArr[heapNumTwo]; // adding the new weight in
         heap.push(nextFree, weightArr);
-        nextFree++;
+        nextFree++; // next free index
     }
     return heap.pop(weightArr); // root index
 }
@@ -134,9 +130,9 @@ void generateCodes(int root, string codes[]) {
         pair<int, string> current = stack.top();
         int index = current.first;
         string str = current.second;
-        stack.pop();
+        stack.pop(); // pops the stack as that stacks info is collected and will be processed.
         if (leftArr[index] == -1) { // looking at createLeafNodes, -1 should be it
-            codes[(int)charArr[index] - 'a'] = str;
+            codes[(int)charArr[index] - 'a'] = str; // codes[char at index]
             continue;
         } else {
             stack.push(make_pair(leftArr[index], str + "0"));
