@@ -11,6 +11,6 @@ C:\Users\rowla\AppData\Local\JetBrains\CLion2025.2\cygwin_cmake\bin\cmake.exe -D
 -- Check for working CXX compiler: /usr/bin/c++.exe - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Configuring done (9.7s)
--- Generating done (0.3s)
+-- Configuring done (4.5s)
+-- Generating done (0.2s)
 -- Build files have been written to: /cygdrive/c/Users/rowla/CLionProjects/fa25PA2/cmake-build-debug

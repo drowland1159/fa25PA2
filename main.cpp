@@ -136,13 +136,12 @@ void generateCodes(int root, string codes[]) {
         string str = current.second;
         stack.pop();
         if (leftArr[index] == -1) { // looking at createLeafNodes, -1 should be it
-            codes[index] = str;
+            codes[(int)charArr[index] - 'a'] = str;
             continue;
         } else {
             stack.push(make_pair(leftArr[index], str + "0"));
             stack.push(make_pair(rightArr[index], str + "1"));
         }
-
     }
 }
 
